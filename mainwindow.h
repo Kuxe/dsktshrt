@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+class Model;
+
 namespace Ui {
 class MainWindow;
 }
@@ -15,7 +17,18 @@ public:
 	explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
 
+	void setModel(Model* model);
+
+public slots:
+	void setName(const QString &value);
+	void setAppPath(const QString &value);
+	void setIconPath(const QString &value);
+	void setSudopwd(const QString &value);
+
+	void createShortcut();
+
 private:
+	Model* model;
 	Ui::MainWindow *ui;
 };
 

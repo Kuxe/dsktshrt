@@ -14,12 +14,9 @@ QMAKE_CXXFLAGS += -std=c++1y -Werror -Wall
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    model.cpp \
-    modelform.cpp
+    model.cpp
 
 HEADERS  += mainwindow.h \
-    model.h \
-    modelform.h
+    model.h
 
-FORMS    += mainwindow.ui \
-    modelform.ui
+FORMS    += mainwindow.ui

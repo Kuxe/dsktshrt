@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>235</width>
+    <width>347</width>
     <height>134</height>
    </rect>
   </property>
@@ -27,6 +27,25 @@ font: 11pt &quot;Ubuntu Mono&quot;;</string>
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="nameLineEdit">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;eg: dsktshrt&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(80, 80, 80);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Normal</enum>
+        </property>
+        <property name="cursorMoveStyle">
+         <enum>Qt::LogicalMoveStyle</enum>
+        </property>
+       </widget>
+      </item>
       <item row="2" column="1">
        <widget class="QLineEdit" name="iconLineEdit">
         <property name="toolTip">
@@ -104,39 +123,17 @@ font: 11pt &quot;Ubuntu Mono&quot;;</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="nameLineEdit">
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;eg: dsktshrt&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(80, 80, 80);</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="echoMode">
-         <enum>QLineEdit::Normal</enum>
-        </property>
-        <property name="cursorMoveStyle">
-         <enum>Qt::LogicalMoveStyle</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="ModelForm" name="modelWidget" native="true">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
-      </item>
       <item row="3" column="0" colspan="2">
        <widget class="QPushButton" name="createShortcutButton">
         <property name="text">
          <string>Create shortcut</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Browse...</string>
         </property>
        </widget>
       </item>
@@ -146,21 +143,6 @@ font: 11pt &quot;Ubuntu Mono&quot;;</string>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>ModelForm</class>
-   <extends>QWidget</extends>
-   <header>modelform.h</header>
-   <container>1</container>
-   <slots>
-    <slot>setName(QString)</slot>
-    <slot>setAppPath(QString)</slot>
-    <slot>setIconPath(QString)</slot>
-    <slot>createShortcut()</slot>
-    <slot>setSudopwd(QString)</slot>
-   </slots>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>nameLineEdit</tabstop>
   <tabstop>pathLineEdit</tabstop>
@@ -172,66 +154,73 @@ font: 11pt &quot;Ubuntu Mono&quot;;</string>
   <connection>
    <sender>nameLineEdit</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>modelWidget</receiver>
+   <receiver>MainWindow</receiver>
    <slot>setName(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>224</x>
-     <y>31</y>
+     <x>226</x>
+     <y>21</y>
     </hint>
     <hint type="destinationlabel">
-     <x>225</x>
-     <y>140</y>
+     <x>290</x>
+     <y>16</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>pathLineEdit</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>modelWidget</receiver>
+   <receiver>MainWindow</receiver>
    <slot>setAppPath(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>221</x>
-     <y>50</y>
+     <x>229</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
-     <x>225</x>
-     <y>140</y>
+     <x>300</x>
+     <y>71</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>iconLineEdit</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>modelWidget</receiver>
+   <receiver>MainWindow</receiver>
    <slot>setIconPath(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>183</x>
-     <y>70</y>
+     <x>240</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
-     <x>206</x>
-     <y>140</y>
+     <x>297</x>
+     <y>106</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>createShortcutButton</sender>
    <signal>clicked()</signal>
-   <receiver>modelWidget</receiver>
+   <receiver>MainWindow</receiver>
    <slot>createShortcut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>145</x>
-     <y>123</y>
+     <x>208</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>149</x>
-     <y>140</y>
+     <x>267</x>
+     <y>120</y>
     </hint>
    </hints>
   </connection>
  </connections>
+ <slots>
+  <slot>setName(QString)</slot>
+  <slot>setAppPath(QString)</slot>
+  <slot>setIconPath(QString)</slot>
+  <slot>setSudopwd(QString)</slot>
+  <slot>createShortcut()</slot>
+ </slots>
 </ui>

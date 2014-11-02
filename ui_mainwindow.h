@@ -21,7 +21,6 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-#include "modelform.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -31,20 +30,20 @@ public:
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QGridLayout *gridLayout;
+    QLineEdit *nameLineEdit;
     QLineEdit *iconLineEdit;
     QLineEdit *pathLineEdit;
     QLabel *iconLabel;
     QLabel *nameLabel;
     QLabel *pathLabel;
-    QLineEdit *nameLineEdit;
-    ModelForm *modelWidget;
     QPushButton *createShortcutButton;
+    QPushButton *pushButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(235, 134);
+        MainWindow->resize(347, 134);
         MainWindow->setStyleSheet(QLatin1String("background-color: rgb(29, 29, 29);\n"
 "selection-color: rgb(238, 238, 238);\n"
 "color: rgb(238, 238, 238);\n"
@@ -60,6 +59,14 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        nameLineEdit = new QLineEdit(centralWidget);
+        nameLineEdit->setObjectName(QStringLiteral("nameLineEdit"));
+        nameLineEdit->setStyleSheet(QStringLiteral("background-color: rgb(80, 80, 80);"));
+        nameLineEdit->setEchoMode(QLineEdit::Normal);
+        nameLineEdit->setCursorMoveStyle(Qt::LogicalMoveStyle);
+
+        gridLayout->addWidget(nameLineEdit, 0, 1, 1, 1);
+
         iconLineEdit = new QLineEdit(centralWidget);
         iconLineEdit->setObjectName(QStringLiteral("iconLineEdit"));
         iconLineEdit->setStyleSheet(QStringLiteral("background-color: rgb(80, 80, 80);"));
@@ -98,25 +105,15 @@ public:
 
         gridLayout->addWidget(pathLabel, 1, 0, 1, 1);
 
-        nameLineEdit = new QLineEdit(centralWidget);
-        nameLineEdit->setObjectName(QStringLiteral("nameLineEdit"));
-        nameLineEdit->setStyleSheet(QStringLiteral("background-color: rgb(80, 80, 80);"));
-        nameLineEdit->setEchoMode(QLineEdit::Normal);
-        nameLineEdit->setCursorMoveStyle(Qt::LogicalMoveStyle);
-
-        gridLayout->addWidget(nameLineEdit, 0, 1, 1, 1);
-
-        modelWidget = new ModelForm(centralWidget);
-        modelWidget->setObjectName(QStringLiteral("modelWidget"));
-        sizePolicy.setHeightForWidth(modelWidget->sizePolicy().hasHeightForWidth());
-        modelWidget->setSizePolicy(sizePolicy);
-
-        gridLayout->addWidget(modelWidget, 1, 2, 1, 1);
-
         createShortcutButton = new QPushButton(centralWidget);
         createShortcutButton->setObjectName(QStringLiteral("createShortcutButton"));
 
         gridLayout->addWidget(createShortcutButton, 3, 0, 1, 2);
+
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        gridLayout->addWidget(pushButton, 1, 3, 1, 1);
 
 
         verticalLayout->addLayout(gridLayout);
@@ -132,10 +129,10 @@ public:
         QWidget::setTabOrder(iconLineEdit, createShortcutButton);
 
         retranslateUi(MainWindow);
-        QObject::connect(nameLineEdit, SIGNAL(textChanged(QString)), modelWidget, SLOT(setName(QString)));
-        QObject::connect(pathLineEdit, SIGNAL(textChanged(QString)), modelWidget, SLOT(setAppPath(QString)));
-        QObject::connect(iconLineEdit, SIGNAL(textChanged(QString)), modelWidget, SLOT(setIconPath(QString)));
-        QObject::connect(createShortcutButton, SIGNAL(clicked()), modelWidget, SLOT(createShortcut()));
+        QObject::connect(nameLineEdit, SIGNAL(textChanged(QString)), MainWindow, SLOT(setName(QString)));
+        QObject::connect(pathLineEdit, SIGNAL(textChanged(QString)), MainWindow, SLOT(setAppPath(QString)));
+        QObject::connect(iconLineEdit, SIGNAL(textChanged(QString)), MainWindow, SLOT(setIconPath(QString)));
+        QObject::connect(createShortcutButton, SIGNAL(clicked()), MainWindow, SLOT(createShortcut()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -143,6 +140,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Shortcut", 0));
+#ifndef QT_NO_TOOLTIP
+        nameLineEdit->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>eg: dsktshrt</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
+        nameLineEdit->setText(QString());
 #ifndef QT_NO_TOOLTIP
         iconLineEdit->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>eg: /home/sillyusername/arbitraryfolder/icon.ico</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
@@ -153,11 +154,8 @@ public:
         iconLabel->setText(QApplication::translate("MainWindow", "Icon:", 0));
         nameLabel->setText(QApplication::translate("MainWindow", "Name:", 0));
         pathLabel->setText(QApplication::translate("MainWindow", "Path:", 0));
-#ifndef QT_NO_TOOLTIP
-        nameLineEdit->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>eg: dsktshrt</p></body></html>", 0));
-#endif // QT_NO_TOOLTIP
-        nameLineEdit->setText(QString());
         createShortcutButton->setText(QApplication::translate("MainWindow", "Create shortcut", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
     } // retranslateUi
 
 };
