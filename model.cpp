@@ -1,7 +1,6 @@
 #include "model.h"
 #include <iostream>
 #include <fstream>
-#include "modelform.h"
 
 using namespace std;
 
