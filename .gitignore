@@ -2,3 +2,4 @@
 dsktshrt
 Makefile
 *.user
+/build*
