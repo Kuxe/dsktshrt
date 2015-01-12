@@ -46,12 +46,14 @@ void MainWindow::createShortcut()
 void MainWindow::browsePath()
 {
     const QString appPath = QFileDialog::getOpenFileName((this), tr("Set file"), "", tr("Any files (*)"));
+    if(appPath == "") return;
     setAppPath(appPath);
     ui->pathLineEdit->setText(appPath);
 }
 void MainWindow::browseIcon()
 {
     const QString iconPath = QFileDialog::getOpenFileName((this), tr("Set file"), "", tr("Icon files (*.ico *.png *.jpg)"));
+    if(iconPath == "") return;
     setIconPath(iconPath);
     ui->iconLineEdit->setText(iconPath);
 }
@@ -60,6 +62,7 @@ void MainWindow::browseSaveIn()
     QString saveInPath = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
                                                     "/home",
                                                     QFileDialog::ShowDirsOnly);
+    if(saveInPath == "") return;
     setSaveInPath(saveInPath);
     ui->saveInLineEdit->setText(saveInPath);
 }
