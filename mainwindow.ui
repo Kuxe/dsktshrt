@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>347</width>
-    <height>134</height>
+    <height>142</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -131,7 +131,7 @@ font: 11pt &quot;Ubuntu Mono&quot;;</string>
        </widget>
       </item>
       <item row="1" column="3">
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="pathButton">
         <property name="text">
          <string>Browse...</string>
         </property>
@@ -215,12 +215,28 @@ font: 11pt &quot;Ubuntu Mono&quot;;</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pathButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>browsePath()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>296</x>
+     <y>54</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>70</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>setName(QString)</slot>
   <slot>setAppPath(QString)</slot>
   <slot>setIconPath(QString)</slot>
-  <slot>setSudopwd(QString)</slot>
   <slot>createShortcut()</slot>
+  <slot>browsePath()</slot>
  </slots>
 </ui>

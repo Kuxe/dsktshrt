@@ -22,5 +22,4 @@ void MainWindow::setModel(Model* model)
 void MainWindow::setName(const QString &value) { model->setName(value.toUtf8().constData()); }
 void MainWindow::setAppPath(const QString &value) { model->setAppPath(value.toUtf8().constData()); }
 void MainWindow::setIconPath(const QString &value) { model->setIconPath(value.toUtf8().constData()); }
-void MainWindow::setSudopwd(const QString &value) { model->setSudopwd(value.toUtf8().constData()); }
 void MainWindow::createShortcut() { model->createShortcut(); }

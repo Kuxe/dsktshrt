@@ -23,7 +23,6 @@ public slots:
 	void setName(const QString &value);
 	void setAppPath(const QString &value);
 	void setIconPath(const QString &value);
-	void setSudopwd(const QString &value);
 
 	void createShortcut();
 

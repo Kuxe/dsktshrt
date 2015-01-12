@@ -11,7 +11,6 @@ public:
 	string name = "";
 	string appPath = "";
 	string iconPath = "";
-	string sudopwd = "";
 	string errorMessage = "";
 
 public:
