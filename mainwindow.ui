@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>347</width>
-    <height>142</height>
+    <height>174</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -193,6 +193,8 @@ font: 11pt &quot;Ubuntu Mono&quot;;</string>
   <tabstop>pathButton</tabstop>
   <tabstop>iconLineEdit</tabstop>
   <tabstop>iconButton</tabstop>
+  <tabstop>saveInLineEdit</tabstop>
+  <tabstop>saveInButton</tabstop>
   <tabstop>createShortcutButton</tabstop>
  </tabstops>
  <resources/>

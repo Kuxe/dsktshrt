@@ -48,7 +48,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(347, 142);
+        MainWindow->resize(347, 174);
         MainWindow->setStyleSheet(QLatin1String("background-color: rgb(29, 29, 29);\n"
 "selection-color: rgb(238, 238, 238);\n"
 "color: rgb(238, 238, 238);\n"
@@ -162,7 +162,9 @@ public:
         QWidget::setTabOrder(pathLineEdit, pathButton);
         QWidget::setTabOrder(pathButton, iconLineEdit);
         QWidget::setTabOrder(iconLineEdit, iconButton);
-        QWidget::setTabOrder(iconButton, createShortcutButton);
+        QWidget::setTabOrder(iconButton, saveInLineEdit);
+        QWidget::setTabOrder(saveInLineEdit, saveInButton);
+        QWidget::setTabOrder(saveInButton, createShortcutButton);
 
         retranslateUi(MainWindow);
         QObject::connect(nameLineEdit, SIGNAL(textChanged(QString)), MainWindow, SLOT(setName(QString)));
