@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.2.1. It"
+#error "This file was generated using the moc from 5.4.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,26 +20,27 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[8];
-    char stringdata[76];
+    char stringdata[75];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_MainWindow_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
+    qptrdiff(offsetof(qt_meta_stringdata_MainWindow_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
-QT_MOC_LITERAL(0, 0, 10),
-QT_MOC_LITERAL(1, 11, 7),
-QT_MOC_LITERAL(2, 19, 0),
-QT_MOC_LITERAL(3, 20, 5),
-QT_MOC_LITERAL(4, 26, 10),
-QT_MOC_LITERAL(5, 37, 11),
-QT_MOC_LITERAL(6, 49, 10),
-QT_MOC_LITERAL(7, 60, 14)
+QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
+QT_MOC_LITERAL(1, 11, 7), // "setName"
+QT_MOC_LITERAL(2, 19, 0), // ""
+QT_MOC_LITERAL(3, 20, 5), // "value"
+QT_MOC_LITERAL(4, 26, 10), // "setAppPath"
+QT_MOC_LITERAL(5, 37, 11), // "setIconPath"
+QT_MOC_LITERAL(6, 49, 10), // "browsePath"
+QT_MOC_LITERAL(7, 60, 14) // "createShortcut"
+
     },
     "MainWindow\0setName\0\0value\0setAppPath\0"
-    "setIconPath\0setSudopwd\0createShortcut\0"
+    "setIconPath\0browsePath\0createShortcut"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,17 +58,17 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   39,    2, 0x0a,
-       4,    1,   42,    2, 0x0a,
-       5,    1,   45,    2, 0x0a,
-       6,    1,   48,    2, 0x0a,
-       7,    0,   51,    2, 0x0a,
+       1,    1,   39,    2, 0x0a /* Public */,
+       4,    1,   42,    2, 0x0a /* Public */,
+       5,    1,   45,    2, 0x0a /* Public */,
+       6,    0,   48,    2, 0x0a /* Public */,
+       7,    0,   49,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::QString,    3,
-    QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -81,7 +82,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->setName((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 1: _t->setAppPath((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 2: _t->setIconPath((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 3: _t->setSudopwd((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 3: _t->browsePath(); break;
         case 4: _t->createShortcut(); break;
         default: ;
         }
@@ -90,7 +91,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
 
 const QMetaObject MainWindow::staticMetaObject = {
     { &QMainWindow::staticMetaObject, qt_meta_stringdata_MainWindow.data,
-      qt_meta_data_MainWindow,  qt_static_metacall, 0, 0}
+      qt_meta_data_MainWindow,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -101,7 +102,7 @@ const QMetaObject *MainWindow::metaObject() const
 
 void *MainWindow::qt_metacast(const char *_clname)
 {
-    if (!_clname) return 0;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_MainWindow.stringdata))
         return static_cast<void*>(const_cast< MainWindow*>(this));
     return QMainWindow::qt_metacast(_clname);

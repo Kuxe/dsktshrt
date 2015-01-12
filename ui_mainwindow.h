@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.2.1
+** Created by: Qt User Interface Compiler version 5.4.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -37,13 +37,13 @@ public:
     QLabel *nameLabel;
     QLabel *pathLabel;
     QPushButton *createShortcutButton;
-    QPushButton *pushButton;
+    QPushButton *pathButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(347, 134);
+        MainWindow->resize(347, 142);
         MainWindow->setStyleSheet(QLatin1String("background-color: rgb(29, 29, 29);\n"
 "selection-color: rgb(238, 238, 238);\n"
 "color: rgb(238, 238, 238);\n"
@@ -110,10 +110,12 @@ public:
 
         gridLayout->addWidget(createShortcutButton, 3, 0, 1, 2);
 
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pathButton = new QPushButton(centralWidget);
+        pathButton->setObjectName(QStringLiteral("pathButton"));
+        pathButton->setDefault(false);
+        pathButton->setFlat(false);
 
-        gridLayout->addWidget(pushButton, 1, 3, 1, 1);
+        gridLayout->addWidget(pathButton, 1, 3, 1, 1);
 
 
         verticalLayout->addLayout(gridLayout);
@@ -133,6 +135,7 @@ public:
         QObject::connect(pathLineEdit, SIGNAL(textChanged(QString)), MainWindow, SLOT(setAppPath(QString)));
         QObject::connect(iconLineEdit, SIGNAL(textChanged(QString)), MainWindow, SLOT(setIconPath(QString)));
         QObject::connect(createShortcutButton, SIGNAL(clicked()), MainWindow, SLOT(createShortcut()));
+        QObject::connect(pathButton, SIGNAL(pressed()), MainWindow, SLOT(browsePath()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -155,7 +158,7 @@ public:
         nameLabel->setText(QApplication::translate("MainWindow", "Name:", 0));
         pathLabel->setText(QApplication::translate("MainWindow", "Path:", 0));
         createShortcutButton->setText(QApplication::translate("MainWindow", "Create shortcut", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
+        pathButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
     } // retranslateUi
 
 };

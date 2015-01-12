@@ -135,6 +135,12 @@ font: 11pt &quot;Ubuntu Mono&quot;;</string>
         <property name="text">
          <string>Browse...</string>
         </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
        </widget>
       </item>
      </layout>
@@ -217,7 +223,7 @@ font: 11pt &quot;Ubuntu Mono&quot;;</string>
   </connection>
   <connection>
    <sender>pathButton</sender>
-   <signal>clicked()</signal>
+   <signal>pressed()</signal>
    <receiver>MainWindow</receiver>
    <slot>browsePath()</slot>
    <hints>

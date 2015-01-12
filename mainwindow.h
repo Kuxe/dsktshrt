@@ -23,7 +23,7 @@ public slots:
 	void setName(const QString &value);
 	void setAppPath(const QString &value);
 	void setIconPath(const QString &value);
-
+    void browsePath();
 	void createShortcut();
 
 private:
