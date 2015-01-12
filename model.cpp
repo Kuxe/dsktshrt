@@ -22,13 +22,28 @@ void Model::setIconPath(const string &value)
 void Model::createShortcut()
 {
 
+    if(name == "")
+    {
+        statusMessage = "You must set name!";
+        return;
+    }
+    if(appPath == "")
+    {
+        statusMessage = "You must set path!";
+        return;
+    }
+    if(iconPath == "")
+    {
+        statusMessage = "You must set icon!";
+        return;
+    }
+
 	string dotdesktopspath = "/home/kuxe/.local/share/applications/" + name + ".desktop";
 	cout << "creating shortcut at: " << dotdesktopspath << endl;
 	ofstream outfile(dotdesktopspath);
-	if(outfile.is_open() && name != "" && appPath != "")
+    if(outfile.is_open())
 	{
-		errorMessage = "";
-		cout << "opened stream" << endl;
+        statusMessage = "Success!";
 		outfile << "[Desktop Entry]" << endl;
 		outfile << "Version=1.0" << endl;
 		outfile << "Type=Application" << endl;
@@ -42,9 +57,8 @@ void Model::createShortcut()
 	}
 	else
 	{
-		errorMessage = "Could't create " + dotdesktopspath;
-		cout << errorMessage << endl;
-		cout << "Perhaps I am not running with correct privilegies?" << endl;
+        statusMessage = "Failed to open output stream " + dotdesktopspath + "\nPerhaps I am not running with correct privilegies?";
 	}
+    cout << statusMessage << endl;
 	outfile.close();
 }

@@ -35,10 +35,11 @@ public:
     QLineEdit *pathLineEdit;
     QLabel *iconLabel;
     QLabel *nameLabel;
-    QLabel *pathLabel;
     QPushButton *createShortcutButton;
-    QPushButton *pathButton;
+    QLabel *pathLabel;
     QPushButton *iconButton;
+    QPushButton *pathButton;
+    QLabel *onCreateMsgLabel;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -100,16 +101,21 @@ public:
 
         gridLayout->addWidget(nameLabel, 0, 0, 1, 1);
 
+        createShortcutButton = new QPushButton(centralWidget);
+        createShortcutButton->setObjectName(QStringLiteral("createShortcutButton"));
+
+        gridLayout->addWidget(createShortcutButton, 3, 0, 1, 2);
+
         pathLabel = new QLabel(centralWidget);
         pathLabel->setObjectName(QStringLiteral("pathLabel"));
         pathLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout->addWidget(pathLabel, 1, 0, 1, 1);
 
-        createShortcutButton = new QPushButton(centralWidget);
-        createShortcutButton->setObjectName(QStringLiteral("createShortcutButton"));
+        iconButton = new QPushButton(centralWidget);
+        iconButton->setObjectName(QStringLiteral("iconButton"));
 
-        gridLayout->addWidget(createShortcutButton, 3, 0, 1, 2);
+        gridLayout->addWidget(iconButton, 2, 3, 1, 1);
 
         pathButton = new QPushButton(centralWidget);
         pathButton->setObjectName(QStringLiteral("pathButton"));
@@ -118,10 +124,11 @@ public:
 
         gridLayout->addWidget(pathButton, 1, 3, 1, 1);
 
-        iconButton = new QPushButton(centralWidget);
-        iconButton->setObjectName(QStringLiteral("iconButton"));
+        onCreateMsgLabel = new QLabel(centralWidget);
+        onCreateMsgLabel->setObjectName(QStringLiteral("onCreateMsgLabel"));
+        onCreateMsgLabel->setCursor(QCursor(Qt::ArrowCursor));
 
-        gridLayout->addWidget(iconButton, 2, 3, 1, 1);
+        gridLayout->addWidget(onCreateMsgLabel, 3, 3, 1, 1);
 
 
         verticalLayout->addLayout(gridLayout);
@@ -133,8 +140,10 @@ public:
         pathLabel->setBuddy(pathLineEdit);
 #endif // QT_NO_SHORTCUT
         QWidget::setTabOrder(nameLineEdit, pathLineEdit);
-        QWidget::setTabOrder(pathLineEdit, iconLineEdit);
-        QWidget::setTabOrder(iconLineEdit, createShortcutButton);
+        QWidget::setTabOrder(pathLineEdit, pathButton);
+        QWidget::setTabOrder(pathButton, iconLineEdit);
+        QWidget::setTabOrder(iconLineEdit, iconButton);
+        QWidget::setTabOrder(iconButton, createShortcutButton);
 
         retranslateUi(MainWindow);
         QObject::connect(nameLineEdit, SIGNAL(textChanged(QString)), MainWindow, SLOT(setName(QString)));
@@ -163,10 +172,11 @@ public:
         pathLineEdit->setText(QString());
         iconLabel->setText(QApplication::translate("MainWindow", "Icon:", 0));
         nameLabel->setText(QApplication::translate("MainWindow", "Name:", 0));
-        pathLabel->setText(QApplication::translate("MainWindow", "Path:", 0));
         createShortcutButton->setText(QApplication::translate("MainWindow", "Create shortcut", 0));
-        pathButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
+        pathLabel->setText(QApplication::translate("MainWindow", "Path:", 0));
         iconButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
+        pathButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
+        onCreateMsgLabel->setText(QApplication::translate("MainWindow", "NOTSET", 0));
     } // retranslateUi
 
 };

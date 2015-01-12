@@ -11,7 +11,7 @@ public:
 	string name = "";
 	string appPath = "";
 	string iconPath = "";
-	string errorMessage = "";
+    string statusMessage = "";
 
 public:
 	void setName(const string &value);
