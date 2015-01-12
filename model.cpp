@@ -19,6 +19,11 @@ void Model::setIconPath(const string &value)
 	iconPath = value;
 }
 
+void Model::setSaveInPath(const string &value)
+{
+    saveInPath = value;
+}
+
 void Model::createShortcut()
 {
 
@@ -37,8 +42,13 @@ void Model::createShortcut()
         statusMessage = "You must set icon!";
         return;
     }
+    if(saveInPath == "")
+    {
+        statusMessage = "You must set save in!";
+        return;
+    }
 
-	string dotdesktopspath = "/home/kuxe/.local/share/applications/" + name + ".desktop";
+    string dotdesktopspath = saveInPath + "/" + name + ".desktop";
 	cout << "creating shortcut at: " << dotdesktopspath << endl;
 	ofstream outfile(dotdesktopspath);
     if(outfile.is_open())
@@ -57,7 +67,7 @@ void Model::createShortcut()
 	}
 	else
 	{
-        statusMessage = "Failed to open output stream " + dotdesktopspath + "\nPerhaps I am not running with correct privilegies?";
+        statusMessage = "Failed to open output stream!\n" + dotdesktopspath + "\nPerhaps I am not running with correct privilegies?";
 	}
     cout << statusMessage << endl;
 	outfile.close();

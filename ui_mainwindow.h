@@ -30,6 +30,7 @@ public:
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QGridLayout *gridLayout;
+    QLabel *onCreateMsgLabel;
     QLineEdit *nameLineEdit;
     QLineEdit *iconLineEdit;
     QLineEdit *pathLineEdit;
@@ -39,7 +40,9 @@ public:
     QLabel *pathLabel;
     QPushButton *iconButton;
     QPushButton *pathButton;
-    QLabel *onCreateMsgLabel;
+    QLabel *saveInLabel;
+    QLineEdit *saveInLineEdit;
+    QPushButton *saveInButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -61,6 +64,12 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        onCreateMsgLabel = new QLabel(centralWidget);
+        onCreateMsgLabel->setObjectName(QStringLiteral("onCreateMsgLabel"));
+        onCreateMsgLabel->setCursor(QCursor(Qt::ArrowCursor));
+
+        gridLayout->addWidget(onCreateMsgLabel, 4, 3, 1, 1);
+
         nameLineEdit = new QLineEdit(centralWidget);
         nameLineEdit->setObjectName(QStringLiteral("nameLineEdit"));
         nameLineEdit->setStyleSheet(QStringLiteral("background-color: rgb(80, 80, 80);"));
@@ -104,7 +113,7 @@ public:
         createShortcutButton = new QPushButton(centralWidget);
         createShortcutButton->setObjectName(QStringLiteral("createShortcutButton"));
 
-        gridLayout->addWidget(createShortcutButton, 3, 0, 1, 2);
+        gridLayout->addWidget(createShortcutButton, 4, 0, 1, 2);
 
         pathLabel = new QLabel(centralWidget);
         pathLabel->setObjectName(QStringLiteral("pathLabel"));
@@ -124,11 +133,21 @@ public:
 
         gridLayout->addWidget(pathButton, 1, 3, 1, 1);
 
-        onCreateMsgLabel = new QLabel(centralWidget);
-        onCreateMsgLabel->setObjectName(QStringLiteral("onCreateMsgLabel"));
-        onCreateMsgLabel->setCursor(QCursor(Qt::ArrowCursor));
+        saveInLabel = new QLabel(centralWidget);
+        saveInLabel->setObjectName(QStringLiteral("saveInLabel"));
 
-        gridLayout->addWidget(onCreateMsgLabel, 3, 3, 1, 1);
+        gridLayout->addWidget(saveInLabel, 3, 0, 1, 1);
+
+        saveInLineEdit = new QLineEdit(centralWidget);
+        saveInLineEdit->setObjectName(QStringLiteral("saveInLineEdit"));
+        saveInLineEdit->setStyleSheet(QStringLiteral("background-color: rgb(80, 80, 80);"));
+
+        gridLayout->addWidget(saveInLineEdit, 3, 1, 1, 1);
+
+        saveInButton = new QPushButton(centralWidget);
+        saveInButton->setObjectName(QStringLiteral("saveInButton"));
+
+        gridLayout->addWidget(saveInButton, 3, 3, 1, 1);
 
 
         verticalLayout->addLayout(gridLayout);
@@ -152,6 +171,8 @@ public:
         QObject::connect(createShortcutButton, SIGNAL(clicked()), MainWindow, SLOT(createShortcut()));
         QObject::connect(pathButton, SIGNAL(pressed()), MainWindow, SLOT(browsePath()));
         QObject::connect(iconButton, SIGNAL(pressed()), MainWindow, SLOT(browseIcon()));
+        QObject::connect(saveInButton, SIGNAL(pressed()), MainWindow, SLOT(browseSaveIn()));
+        QObject::connect(saveInLineEdit, SIGNAL(textChanged(QString)), MainWindow, SLOT(setSaveInPath(QString)));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -159,6 +180,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Shortcut", 0));
+        onCreateMsgLabel->setText(QApplication::translate("MainWindow", "NOTSET", 0));
 #ifndef QT_NO_TOOLTIP
         nameLineEdit->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>eg: dsktshrt</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
@@ -176,7 +198,8 @@ public:
         pathLabel->setText(QApplication::translate("MainWindow", "Path:", 0));
         iconButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
         pathButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
-        onCreateMsgLabel->setText(QApplication::translate("MainWindow", "NOTSET", 0));
+        saveInLabel->setText(QApplication::translate("MainWindow", "Save in:", 0));
+        saveInButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
     } // retranslateUi
 
 };

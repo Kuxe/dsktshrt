@@ -20,11 +20,14 @@ MainWindow::~MainWindow()
 void MainWindow::setModel(Model* model)
 {
 	this->model = model;
+    model->saveInPath = QDir::homePath().toStdString() + "/.local/share/applications";
+    ui->saveInLineEdit->setText(QString::fromStdString(model->saveInPath));
 }
 
 void MainWindow::setName(const QString &value) { model->setName(value.toUtf8().constData()); }
 void MainWindow::setAppPath(const QString &value) { model->setAppPath(value.toUtf8().constData()); }
 void MainWindow::setIconPath(const QString &value) { model->setIconPath(value.toUtf8().constData()); }
+void MainWindow::setSaveInPath(const QString &value) { model->setSaveInPath(value.toUtf8().constData()); }
 void MainWindow::createShortcut()
 {
     model->createShortcut();
@@ -51,4 +54,12 @@ void MainWindow::browseIcon()
     const QString iconPath = QFileDialog::getOpenFileName((this), tr("Set file"), "", tr("Icon files (*.ico *.png *.jpg)"));
     setIconPath(iconPath);
     ui->iconLineEdit->setText(iconPath);
+}
+void MainWindow::browseSaveIn()
+{
+    QString saveInPath = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
+                                                    "/home",
+                                                    QFileDialog::ShowDirsOnly);
+    setSaveInPath(saveInPath);
+    ui->saveInLineEdit->setText(saveInPath);
 }

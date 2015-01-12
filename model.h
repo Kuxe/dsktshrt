@@ -11,12 +11,14 @@ public:
 	string name = "";
 	string appPath = "";
 	string iconPath = "";
+    string saveInPath = "";
     string statusMessage = "";
 
 public:
 	void setName(const string &value);
 	void setAppPath(const string &value);
 	void setIconPath(const string &value);
+    void setSaveInPath(const string &value);
 	void createShortcut();
 };
 
