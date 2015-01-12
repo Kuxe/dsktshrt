@@ -38,6 +38,7 @@ public:
     QLabel *pathLabel;
     QPushButton *createShortcutButton;
     QPushButton *pathButton;
+    QPushButton *iconButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -117,6 +118,11 @@ public:
 
         gridLayout->addWidget(pathButton, 1, 3, 1, 1);
 
+        iconButton = new QPushButton(centralWidget);
+        iconButton->setObjectName(QStringLiteral("iconButton"));
+
+        gridLayout->addWidget(iconButton, 2, 3, 1, 1);
+
 
         verticalLayout->addLayout(gridLayout);
 
@@ -136,6 +142,7 @@ public:
         QObject::connect(iconLineEdit, SIGNAL(textChanged(QString)), MainWindow, SLOT(setIconPath(QString)));
         QObject::connect(createShortcutButton, SIGNAL(clicked()), MainWindow, SLOT(createShortcut()));
         QObject::connect(pathButton, SIGNAL(pressed()), MainWindow, SLOT(browsePath()));
+        QObject::connect(iconButton, SIGNAL(pressed()), MainWindow, SLOT(browseIcon()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -159,6 +166,7 @@ public:
         pathLabel->setText(QApplication::translate("MainWindow", "Path:", 0));
         createShortcutButton->setText(QApplication::translate("MainWindow", "Create shortcut", 0));
         pathButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
+        iconButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
     } // retranslateUi
 
 };

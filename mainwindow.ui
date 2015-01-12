@@ -143,6 +143,13 @@ font: 11pt &quot;Ubuntu Mono&quot;;</string>
         </property>
        </widget>
       </item>
+      <item row="2" column="3">
+       <widget class="QPushButton" name="iconButton">
+        <property name="text">
+         <string>Browse...</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
@@ -237,6 +244,22 @@ font: 11pt &quot;Ubuntu Mono&quot;;</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>iconButton</sender>
+   <signal>pressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>browseIcon()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>296</x>
+     <y>86</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>70</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>setName(QString)</slot>
@@ -244,5 +267,6 @@ font: 11pt &quot;Ubuntu Mono&quot;;</string>
   <slot>setIconPath(QString)</slot>
   <slot>createShortcut()</slot>
   <slot>browsePath()</slot>
+  <slot>browseIcon()</slot>
  </slots>
 </ui>

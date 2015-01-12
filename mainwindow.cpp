@@ -30,3 +30,9 @@ void MainWindow::browsePath()
     setAppPath(appPath);
     ui->pathLineEdit->setText(appPath);
 }
+void MainWindow::browseIcon()
+{
+    const QString iconPath = QFileDialog::getOpenFileName((this), tr("Set file"), "", tr("Icon files (*.ico *.png *.jpg)"));
+    setIconPath(iconPath);
+    ui->iconLineEdit->setText(iconPath);
+}
