@@ -26,25 +26,28 @@ void Model::setSaveInPath(const string &value)
 
 void Model::createShortcut()
 {
-
+    statusMessage = "";
     if(name == "")
     {
-        statusMessage = "You must set name!";
-        return;
+        statusMessage += "You must set name!\n";
     }
     if(appPath == "")
     {
-        statusMessage = "You must set path!";
-        return;
+        statusMessage += "You must set path!\n";
     }
     if(iconPath == "")
     {
-        statusMessage = "You must set icon!";
-        return;
+        statusMessage += "You must set icon!\n";
     }
     if(saveInPath == "")
     {
-        statusMessage = "You must set save in!";
+        statusMessage += "You must set save in!\n";
+    }
+
+    //If any error was set...
+    if(statusMessage != "")
+    {
+        //then abort
         return;
     }
 
@@ -67,7 +70,7 @@ void Model::createShortcut()
 	}
 	else
 	{
-        statusMessage = "Failed to open output stream!\n" + dotdesktopspath + "\nPerhaps I am not running with correct privilegies?";
+        statusMessage = "Failed to open output stream!\n" + dotdesktopspath + "\nPerhaps I am not running with correct privilegies?\nPerhaps Save in folder doesn't exist?";
 	}
     cout << statusMessage << endl;
 	outfile.close();
