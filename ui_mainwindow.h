@@ -36,13 +36,13 @@ public:
     QLineEdit *pathLineEdit;
     QLabel *iconLabel;
     QLabel *nameLabel;
-    QPushButton *createShortcutButton;
     QLabel *pathLabel;
     QPushButton *iconButton;
     QPushButton *pathButton;
     QLabel *saveInLabel;
     QLineEdit *saveInLineEdit;
     QPushButton *saveInButton;
+    QPushButton *createShortcutButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -110,11 +110,6 @@ public:
 
         gridLayout->addWidget(nameLabel, 0, 0, 1, 1);
 
-        createShortcutButton = new QPushButton(centralWidget);
-        createShortcutButton->setObjectName(QStringLiteral("createShortcutButton"));
-
-        gridLayout->addWidget(createShortcutButton, 4, 0, 1, 2);
-
         pathLabel = new QLabel(centralWidget);
         pathLabel->setObjectName(QStringLiteral("pathLabel"));
         pathLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -148,6 +143,11 @@ public:
         saveInButton->setObjectName(QStringLiteral("saveInButton"));
 
         gridLayout->addWidget(saveInButton, 3, 3, 1, 1);
+
+        createShortcutButton = new QPushButton(centralWidget);
+        createShortcutButton->setObjectName(QStringLiteral("createShortcutButton"));
+
+        gridLayout->addWidget(createShortcutButton, 4, 1, 1, 1);
 
 
         verticalLayout->addLayout(gridLayout);
@@ -196,12 +196,12 @@ public:
         pathLineEdit->setText(QString());
         iconLabel->setText(QApplication::translate("MainWindow", "Icon:", 0));
         nameLabel->setText(QApplication::translate("MainWindow", "Name:", 0));
-        createShortcutButton->setText(QApplication::translate("MainWindow", "Create shortcut", 0));
         pathLabel->setText(QApplication::translate("MainWindow", "Path:", 0));
         iconButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
         pathButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
         saveInLabel->setText(QApplication::translate("MainWindow", "Save in:", 0));
         saveInButton->setText(QApplication::translate("MainWindow", "Browse...", 0));
+        createShortcutButton->setText(QApplication::translate("MainWindow", "Create shortcut", 0));
     } // retranslateUi
 
 };
