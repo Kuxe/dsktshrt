@@ -1,5 +1,5 @@
 *.o
 dsktshrt
 Makefile
-*.user
+*.user*
 /build*
