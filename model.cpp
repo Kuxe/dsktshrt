@@ -19,11 +19,6 @@ void Model::setIconPath(const string &value)
 	iconPath = value;
 }
 
-void Model::setSudopwd(const string &value)
-{
-	sudopwd = value;
-}
-
 void Model::createShortcut()
 {
 

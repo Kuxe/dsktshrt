@@ -18,8 +18,6 @@ public:
 	void setName(const string &value);
 	void setAppPath(const string &value);
 	void setIconPath(const string &value);
-	void setSudopwd(const string &value);
-
 	void createShortcut();
 };
 
