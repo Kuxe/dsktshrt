@@ -70,7 +70,7 @@ void Model::createShortcut()
 	}
 	else
 	{
-        statusMessage = "Failed to open output stream!\n" + dotdesktopspath + "\nPerhaps I am not running with correct privilegies?\nPerhaps Save in folder doesn't exist?";
+        statusMessage += "Failed to open output stream!\n" + dotdesktopspath + "\nPerhaps I am not running with correct privilegies?\nPerhaps Save in folder doesn't exist?\nPerhaps there's illegal characters in the name?";
 	}
     cout << statusMessage << endl;
 	outfile.close();
